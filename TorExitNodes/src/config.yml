@@ -1,9 +1,9 @@
 opencti:
   url: 'http://10.63.0.10:8080'
-  token: 'OPENCTI_ADMIN_ID'
+  token: 'ad374cdd-a918-4a61-bd79-73acdd28830b'
 
 connector:
-  id: 'UUIDv4'
+  id: 'e9c541e4-e405-4977-b93a-59a25f45e1d2'
   type: 'EXTERNAL_IMPORT'
   name: 'TorExitNode'
   scope: 'TorExit-Addresses'
