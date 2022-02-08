@@ -13,5 +13,5 @@ services:
       - CONNECTOR_LOG_LEVEL=info
       - TOR_EXIT_NODE_URL=https://check.torproject.org/exit-addresses
       - TOR_CREATE_INDICATORS=true
-      - TOR_INTERVAL=1 # In days.
+      - TOR_INTERVAL=2 # In days, must be strictly greater than 1.
     restart: always

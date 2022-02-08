@@ -34,7 +34,6 @@ class TorExitNode:
         self.create_indicators = get_config_variable(
             "TOR_CREATE_INDICATORS", ["tor", "create_indicators"], config
         )
-        self.tor_labels = get_config_variable("TOR_LABELS", ["tor", "labels"], config)
         self.interval = get_config_variable(
             "TOR_INTERVAL", ["tor", "interval"], config, True
         )
