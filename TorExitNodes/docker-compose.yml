@@ -1,0 +1,17 @@
+version: '3'
+services:
+  connector-thehive:
+    image: omarelabed/opencti-torexitnode-connector:1.0
+    environment:
+      - OPENCTI_URL=http://localhost
+      - OPENCTI_TOKEN=ChangeMe
+      - CONNECTOR_ID=ChangeMe
+      - CONNECTOR_TYPE=EXTERNAL_IMPORT
+      - CONNECTOR_NAME=TorExitNodes
+      - CONNECTOR_SCOPE=Ip-Address, Tor-Exit-Nodes
+      - CONNECTOR_CONFIDENCE_LEVEL=80 # From 0 (Unknown) to 100 (Fully trusted)
+      - CONNECTOR_LOG_LEVEL=info
+      - TOR_EXIT_NODE_URL=https://check.torproject.org/exit-addresses
+      - TOR_CREATE_INDICATORS=true
+      - TOR_INTERVAL=1 # In days.
+    restart: always
