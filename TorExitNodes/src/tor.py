@@ -114,7 +114,7 @@ class TorExitNode:
                                 ),
                                 key="IPv4-Addr.value",
                                 value=ipaddress,
-                                description="VX Vault URL",
+                                description="Tor Exit Node Address",
                                 x_opencti_score=100,
                                 labels=["TorExitNode"],
                                 object_marking_refs=[TLP_WHITE],
