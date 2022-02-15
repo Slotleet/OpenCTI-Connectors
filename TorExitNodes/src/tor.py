@@ -1,7 +1,7 @@
 import os
 import yaml
 import time
-import urllib.request
+import requests
 import ssl
 import certifi
 import re
@@ -90,23 +90,11 @@ class TorExitNode:
                     )
                     try:
                         ips = []  # Empty lists for ips
-                        response = urllib.request.urlopen(
-                            self.tor_url,
-                            context=ssl.create_default_context(cafile=certifi.where()),
-                        )
-                        resp = response.read()
-                        replace_space = resp.decode("UTF-8").replace(" ", ",")
-                        replace_newline = replace_space.replace("\n", ",")
-                        replace_space_with_comma = replace_newline.replace(" ", ",")
-                        split_lines = replace_space_with_comma.split(",")
-                        for i in split_lines:
-                            ips.append(
-                                re.findall(r"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})", i)
-                            )
-                        clear_lists = [ele for ele in ips if ele != []]
-                        flatten = self.flatten(clear_lists)
+                        r = requests.get("https://check.torproject.org/exit-addresses")
+                        FindIps = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+                        Ips = re.findall(FindIps, r.text)
                         bundle_objects = []
-                        for ipaddress in flatten:
+                        for ipaddress in Ips:
 
                             stix_observable = SimpleObservable(
                                 id=OpenCTIStix2Utils.generate_random_stix_id(
@@ -114,7 +102,7 @@ class TorExitNode:
                                 ),
                                 key="IPv4-Addr.value",
                                 value=ipaddress,
-                                description="Tor Exit Node Address",
+                                description="Tor Exit Nodes are the gateways where encrypted Tor traffic hits the Internet. This means an exit node can be abused to monitor Tor traffic (after it leaves the onion network).",
                                 x_opencti_score=100,
                                 labels=["TorExitNode"],
                                 object_marking_refs=[TLP_WHITE],

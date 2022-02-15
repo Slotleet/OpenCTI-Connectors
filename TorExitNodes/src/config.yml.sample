@@ -1,13 +1,14 @@
 opencti:
-  url: 'http://10.21.6.34:8080'
-  token: 'ad374cdd-a918-4a61-bd79-73acdd28830b'
-
+  url: 'http://localhost'
+  token: 'ChangeMe'
+  
 connector:
-  id: 'e9c541e4-e405-4977-b93a-59a25f45e1d2'
+  id: 'ChangeMe'
   type: 'EXTERNAL_IMPORT'
-  name: 'TorExitNode'
-  scope: 'TorExit-Addresses'
-  confidence_level: 100 # From 0 (Unknown) to 100 (Fully trusted)
+  name: 'Talos IP blacklist'
+  scope: ipv4-addr,domain
+  confidence_level: 3
+  log_level: 'info'
   log_level: 'info'
 
 tor:
