@@ -1,0 +1,18 @@
+opencti:
+  url: 'http://10.63.0.10:8080'
+  token: 'ad374cdd-a918-4a61-bd79-73acdd28830b'
+
+connector:
+  id: 'e9c541e4-e405-4977-b93a-59a25f45e1d2'
+  type: 'EXTERNAL_IMPORT'
+  name: 'TheHive'
+  scope: 'thehive'
+  confidence_level: 80 # From 0 (Unknown) to 100 (Fully trusted)
+  update_existing_data: True
+  log_level: 'info'
+
+thehive:
+  url: 'http://192.168.214.117:9000'
+  api_key: '6AEBRPuArKAjKqud+ruAUa1hX+i/+nvh'
+  check_ssl: False
+  import_from_date: '2022-02-04T00:00:00' # Optional
