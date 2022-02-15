@@ -91,9 +91,9 @@ class TheHive:
                                     alert_id=observables["_id"],
                                     fields=["tags", "tlp", "severity"],
                                     )
-                                if updated:
-                                    message = "ID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
-                                    requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
+                                    if updated:
+                                        message = "ID:" + observables["_id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
                             if observable["dataType"] == "domain" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -104,9 +104,9 @@ class TheHive:
                                     alert_id=observables["_id"],
                                     fields=["tags", "tlp", "severity"],
                                     )
-                                if updated:
-                                    message = "ID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
-                                    requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
+                                    if updated:
+                                        message = "ID:" + observables["_id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
                             if observable["dataType"] == "url" :
                                 data = urlparse(observable["data"]).netloc
                                 if self.helper.api.stix_cyber_observable.list(search=data.replace("www.", "")):
@@ -118,9 +118,9 @@ class TheHive:
                                     alert_id=observables["_id"],
                                     fields=["tags", "tlp", "severity"],
                                     )
-                                if updated:
-                                    message = "ID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
-                                    requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
+                                    if updated:
+                                        message = "ID:" + observables["_id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel"
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
                             if observable["dataType"] == "hash" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -131,14 +131,14 @@ class TheHive:
                                     alert_id=observables["_id"],
                                     fields=["tags", "tlp", "severity"],
                                     )
-                                if updated:
-                                    message = "ID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel"
-                                    requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
+                                    if updated:
+                                        message = "ID:" + observables["_id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel"
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=177767479&text=" + message)
                 except Exception as e:
                     self.helper.log_error(str(e))
                 # Store the current timestamp as a last run
                 message = (
-                    "Connector successfully run \n status : Nothing found in new alerts storing last_run as "
+                    "Connector successfully run storing last_run as "
                     + str(timestamp)
                 )
                 self.helper.log_info(message)

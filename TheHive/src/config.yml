@@ -1,5 +1,5 @@
 opencti:
-  url: 'http://10.63.0.10:8080'
+  url: 'http://10.21.6.34:8080'
   token: 'ad374cdd-a918-4a61-bd79-73acdd28830b'
 
 connector:
@@ -9,7 +9,7 @@ connector:
   scope: 'thehive'
   confidence_level: 80 # From 0 (Unknown) to 100 (Fully trusted)
   update_existing_data: True
-  log_level: 'info'
+  log_level: 'debug'
 
 thehive:
   url: 'http://192.168.214.117:9000'
