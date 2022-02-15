@@ -93,8 +93,10 @@ class TorExitNode:
                         r = requests.get("https://check.torproject.org/exit-addresses")
                         FindIps = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
                         Ips = re.findall(FindIps, r.text)
+                        clean=list(dict.fromkeys(Ips))
+
                         bundle_objects = []
-                        for ipaddress in Ips:
+                        for ipaddress in clean:
 
                             stix_observable = SimpleObservable(
                                 id=OpenCTIStix2Utils.generate_random_stix_id(
