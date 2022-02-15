@@ -16,27 +16,6 @@ from thehive4py.api import TheHiveApi
 from thehive4py.models import Alert, AlertArtifact
 from thehive4py.query import Gte, Eq, And
 
-OBSERVABLES_MAPPING = {
-    "autonomous-system": "Autonomous-System.number",
-    "domain": "value",
-    "file": None,
-    "file_md5": "hashes_MD5",
-    "file_sha1": "hashes_SHA1",
-    "file_sha256": "hashes_SHA256",
-    "filename": "name",
-    "fqdn": "X-OpenCTI-Hostname.value",
-    "hash": None,
-    "ip": "value",
-    "mail": "Email-Message.body",
-    "mail_subject": "Email-Message.subject",
-    "other": "X-OpenCTI-Text.value",
-    "regexp": "X-OpenCTI-Text.value",
-    "registry": "Windows-Registry-Key.key",
-    "uri_path": "X-OpenCTI-Text.value",
-    "url": "value",
-    "user-agent": "X-OpenCTI-User-Agent.value",
-}
-
 class TheHive:
     def __init__(self):
         # Instantiate the connector helper from config
