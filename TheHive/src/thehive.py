@@ -109,6 +109,32 @@ class TheHive:
                                     if updated:
                                         message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
                                         requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                            if observable["dataType"] == "DestinationIP" :
+                                if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
+                                    observables["tags"].append("OPENCTI")
+                                    observables["tlp"] = 3
+                                    observables["severity"] = 4
+                                    updated = self.thehive_api.update_alert(
+                                    alert=Alert(json=observables),
+                                    alert_id=observables["_id"],
+                                    fields=["tags", "tlp", "severity"],
+                                    )
+                                    if updated:
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                            if observable["dataType"] == "SourceIP" :
+                                if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
+                                    observables["tags"].append("OPENCTI")
+                                    observables["tlp"] = 3
+                                    observables["severity"] = 4
+                                    updated = self.thehive_api.update_alert(
+                                    alert=Alert(json=observables),
+                                    alert_id=observables["_id"],
+                                    fields=["tags", "tlp", "severity"],
+                                    )
+                                    if updated:
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
                             if observable["dataType"] == "url" :
                                 data = urlparse(observable["data"]).netloc
                                 if self.helper.api.stix_cyber_observable.list(search=data.replace("www.", "")):
