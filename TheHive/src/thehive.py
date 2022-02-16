@@ -94,8 +94,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n<b>" + observable["data"].replace(".", "[.]") + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                             if observable["dataType"] == "domain" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -107,8 +107,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n<b>" + observable["data"].replace(".", "[.]") + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                             if observable["dataType"] == "DestinationIP" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -120,8 +120,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\nType: BT Security Threat Monitoring" + "\n<b>" + observable["data"].replace(".", "[.]") + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                             if observable["dataType"] == "SourceIP" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -133,8 +133,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\nType: BT Security Threat Monitoring" + "\n<b>" + observable["data"].replace(".", "[.]") + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                             if observable["dataType"] == "url" :
                                 data = urlparse(observable["data"]).netloc
                                 if self.helper.api.stix_cyber_observable.list(search=data.replace("www.", "")):
@@ -147,8 +147,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n<b>" + observable["data"].replace(".", "[.]") + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                             if observable["dataType"] == "hash" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
                                     observables["tags"].append("OPENCTI")
@@ -160,8 +160,8 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel database."
-                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n<b>" + observable["data"] + "</b> has matched our Threat intel database."
+                                        requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&parse_mode=html&text=" + message)
                 except Exception as e:
                     self.helper.log_error(str(e))
                 # Store the current timestamp as a last run
