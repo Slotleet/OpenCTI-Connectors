@@ -120,7 +120,7 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel database."
                                         requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
                             if observable["dataType"] == "SourceIP" :
                                 if self.helper.api.stix_cyber_observable.list(search=observable["data"]):
@@ -133,7 +133,7 @@ class TheHive:
                                     fields=["tags", "tlp", "severity"],
                                     )
                                     if updated:
-                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"].replace(".", "[.]") + " has matched our Threat intel database."
+                                        message = "⚠ WARNING! ⚠\nID:" + observables["id"] + "\n" + observables["title"] + "\n" + observable["data"] + " has matched our Threat intel database."
                                         requests.post(self.telegram_bot_url + "/sendMessage?chat_id=-657002487&text=" + message)
                             if observable["dataType"] == "url" :
                                 data = urlparse(observable["data"]).netloc
